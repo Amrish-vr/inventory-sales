@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="/css/index-flipcard.css">
+<link type="text/css" rel="stylesheet" href="/css/index-navigation.css">
+</head>
+<body>
+
+	<div class="navbar">
+		<a class="active" th:href="@{/home}"><i class="fa fa-fw fa-home"></i>
+			Home</a> <a href="#"><i class="fa fa-fw fa-search"></i>About</a> <a
+			href="signUp.html"><i class="fa fa-fw fa-envelope"></i>Sign Up</a> <a
+			href="Login.html"><i class="fa fa-fw fa-user"></i> Login</a>
+	</div>
+	<br>
+
+
+
+	<h1 id="project-name" align="center">Retail Management System</h1>
+
+	<br>
+
+	<div class="flip-card">
+		<div class="flip-card-inner">
+			<div class="flip-card-front">
+				<img class="image-size" src="/images/heirarchy_management.jpg">
+				<div class="centered">Hierarchy Management</div>
+
+
+			</div>
+			<div class="flip-card-back">
+				<h2>Hierarchy Management</h2>
+				<p id="align">&nbsp;&nbsp;The merchandise hierarchy allows you
+					to create the preferred product management structure for your
+					company. This helps in managing stocks and merchandising</p>
+				<a class="design" href="google.com">DETAILS</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="flip-card">
+		<div class="flip-card-inner">
+			<div class="flip-card-front">
+				<img class="image-size" src="/images/item.jpg">
+				<div class="centered">Product Management</div>
+			</div>
+			<div class="flip-card-back">
+				<h2>Product Management</h2>
+				<p id="align">&nbsp;&nbsp;A product is used as an information
+					source for a variety of purchasing and production planning
+					activities.This information may include the description,heirarchy
+					etc</p>
+
+				<a class="design" href="google.com">DETAILS</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="flip-card">
+		<div class="flip-card-inner">
+			<div class="flip-card-front">
+				<img class="image-size" src="/images/inventory.jpg">
+				<div class="centered">Inventory Management</div>
+			</div>
+			<div class="flip-card-back">
+				<h2>Inventory Management</h2>
+				<p>&nbsp;&nbsp;Inventory Management helps store personnel to
+					perform in-store operations like managing physical inventories and
+					perform stock counts and so on</p>
+				<a class="design" href="google.com">DETAILS</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="flip-card">
+		<div class="flip-card-inner">
+			<div class="flip-card-front">
+				<img class="image-size" src="/images/Replenishment.jpg">
+				<div class="centered">Replenishment</div>
+			</div>
+			<div class="flip-card-back">
+				<h2>Replenishment</h2>
+				<p>Replenishment helps in managing stocks and monitors stock
+					levels and creates transactions to ensure that stores have optimal
+					stock levels</p>
+				<a class="design" href="google.com">DETAILS</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="flip-card">
+		<div class="flip-card-inner">
+			<div class="flip-card-front">
+				<img class="image-size" src="/images/Sales.jpg">
+				<div class="centered">Sales Records</div>
+			</div>
+			<div class="flip-card-back">
+				<h2>Sales Records</h2>
+				<p>Sales Records provides features like tracking day to day
+					sales and gives us overall transaction happens in a store which
+					helps in planning and merchandising</p>
+				<a class="design" th:href="@{/sales}">DETAILS</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="flip-card">
+		<div class="flip-card-inner">
+			<div class="flip-card-front">
+				<img class="image-size" src="/images/Receiving.jpg">
+				<div class="centered">Stocks Receiving</div>
+			</div>
+			<div class="flip-card-back">
+				<h2>Stock Receiving</h2>
+				<p>Stock Receiving helps store personnel to track item,managing
+					stocks and monitors stock levels which helps in planning and
+					merchandising.</p>
+				<a class="design" href="google.com">DETAILS</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="navbar-bottom">
+		<p>A project by Amrish Rajasekaran &nbsp;&nbsp;</p>
+	</div>
+
+
+</body>
+</html>
