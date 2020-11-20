@@ -7,7 +7,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript"
 	src="webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" th:src="@{/js/group.js}" src="/js/group.js"></script>
+<script type="text/javascript" th:src="@{/js/department.js}" src="/js/department.js"></script>
 <link rel="stylesheet"
 	href="webjars/bootstrap/4.0.0/css/bootstrap.min.css" />
 	<link type="text/css" rel="stylesheet" href="/css/sidebar.css">
@@ -60,17 +60,17 @@
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th>GroupNo</th>
-							<th>GroupName</th>
+							<th>Department No</th>
+							<th>Department Name</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="grp :${data.content}">
-							<td th:text="${grp.groupNo}"></td>
-							<td th:text="${grp.groupName}"></td>
-							<td><a th:href="@{/group/findOne/(id=${grp.groupNo})}"
+						<tr th:each="department :${data.content}">
+							<td th:text="${department.deptNo}"></td>
+							<td th:text="${department.deptName}"></td>
+							<td><a th:href="@{/department/findOne/(id=${department.deptNo})}"
 								class="btn btn-primary eBtn">edit</a></td>
-							<td><a th:href="@{/group/delete/(id=${grp.groupNo})}"
+							<td><a th:href="@{/department/delete/(id=${department.deptNo})}"
 								class="btn btn-danger delBtn">delete</a></td>
 						</tr>
 					</tbody>
@@ -85,7 +85,7 @@
 		</ul>
 
 		<div class="myForm">
-			<form th:action="@{/group/save}" method="post">
+			<form th:action="@{/department/save}" method="post">
 				<div class="modal fade" id="exampleModal" tabindex="-1"
 					aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
@@ -101,12 +101,12 @@
 							<div class="modal-body">
 
 								<div class="form-group">
-									<label for="id" class="col-form-label">GroupNo</label> <input
-										type="text" class="form-control" id="id" name="groupNo" value="" />
+									<label for="id" class="col-form-label">Department No</label> <input
+										type="text" class="form-control" id="id" name="deptNo" value="" />
 								</div>
 								<div class="form-group">
-									<label for="name" class="col-form-label">GroupName</label> <input
-										type="text" class="form-control" id="name" name="groupName"
+									<label for="name" class="col-form-label">Department Name</label> <input
+										type="text" class="form-control" id="name" name="deptName"
 										value="" />
 								</div>
 

@@ -19,7 +19,7 @@ public class DepartmentController {
 	@Autowired
 	private DepartmentService deptSer;
 	
-	@GetMapping("/hierarchy/department")
+	@GetMapping("/department")
 	public String showpage(Model model, @RequestParam(defaultValue = "0") int page) {
 		model.addAttribute("data", deptSer.display(page));
 		model.addAttribute("currentpage", page);
@@ -35,13 +35,13 @@ public class DepartmentController {
 	@GetMapping("/department/delete")
 	public String deleteCountry(@RequestParam Integer id) {
 		deptSer.deletebyID(id);
-		return "redirect:/";
+		return "redirect:/department";
 	}
 
 	@PostMapping(path = "/department/save", consumes = "application/x-www-form-urlencoded")
 	public String saveCountry(Department c) {
 		deptSer.save(c);
-		return "redirect:/";
+		return "redirect:/department";
 	}
 
 }

@@ -19,7 +19,7 @@ public class GroupController {
 	@Autowired
 	private GroupService groupSer;
 	
-	@GetMapping("/hierarchy/group")
+	@GetMapping("/group")
 	public String showpage(Model model, @RequestParam(defaultValue = "0") int page) {
 		model.addAttribute("data", groupSer.display(page));
 		model.addAttribute("currentpage", page);
@@ -35,13 +35,13 @@ public class GroupController {
 	@GetMapping("/group/delete")
 	public String deleteCountry(@RequestParam Integer id) {
 		groupSer.deletebyID(id);
-		return "redirect:/";
+		return "redirect:/group";
 	}
 
 	@PostMapping(path = "/group/save", consumes = "application/x-www-form-urlencoded")
 	public String saveCountry(Grp c) {
 		groupSer.save(c);
-		return "redirect:/";
+		return "redirect:/group";
 	}
 
 }

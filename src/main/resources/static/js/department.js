@@ -5,9 +5,9 @@ $(document).ready(function() {
 		var text = $(this).text();
 
 		if (text == 'edit') {
-			$.get(href, function(grp, status) {
-				$('.myForm #id').val(grp.groupNo);
-				$('.myForm #name').val(grp.groupName);
+			$.get(href, function(department, status) {
+				$('.myForm #id').val(department.deptNo);
+				$('.myForm #name').val(department.deptName);
 			});
 			$('.myForm #exampleModal').modal();
 
