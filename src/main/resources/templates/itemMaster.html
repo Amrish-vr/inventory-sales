@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<script type="text/javascript" src="webjars/jquery/2.2.3/jquerymin.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" th:src="@{/js/itemMaster.js}" src="/js/itemMaster.js"></script>
+<link rel="stylesheet"
+	href="webjars/bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active"><a class="nav-link"
+					th:href="@{/home}">Home <span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">About</a></li>
+			</ul>
+		</div>
+	</nav>
+	<br>
+	<br>
+	<br>
+	<div class="container">
+		<br> <br> <br> <br> <br>
+		<button class="btn btn-success nBtn">New</button>
+		<div class="card">
+			<div class="card-block">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>item</th>
+							<th>parent</th>
+							<th>level</th>
+							<th>Desc</th>
+							<th>Division</th>
+							<th>Name</th>
+							<th>group</th>
+							<th>name</th>
+							<th>dept</th>
+							<th>name</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="item :${data.content}">
+							<td th:text="${item.item}"></td>
+							<td th:text="${item.itemParent}"></td>
+							<td th:text="${item.itemLevel}"></td>
+							<td th:text="${item.itemDesc}"></td>
+							<td th:text="${item.divisionNo}"></td>
+							<td th:text="${item.divisionName}"></td>
+							<td th:text="${item.groupNo}"></td>
+							<td th:text="${item.groupName}"></td>
+							<td th:text="${item.deptNo}"></td>
+							<td th:text="${item.deptName}"></td>
+							<td><a th:href="@{/itemMaster/findOne/(id=${item.item})}"
+								class="btn btn-primary eBtn">edit</a></td>
+							<td><a th:href="@{/itemMaster/delete/(id=${item.item})}"
+								class="btn btn-danger delBtn">delete</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<ul class="nav nav-pills">
+			<li class="nav-item"
+				th:each="i : ${#numbers.sequence(0,data.totalPages-1)}"><a
+				th:href="@{/(page=${i})}" th:text="${i}" class="nav-link"
+				th:classappend="${currentpage}==${i}?'active':' '"></a>
+		</ul>
+		<div class="myForm">
+			<form th:action="@{/itemMaster/save}" method="post">
+				<div class="modal fade" id="exampleModal" tabindex="-1"
+					aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">update or
+									create</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+
+								<div class="form-group">
+									<label for="id" class="col-form-label">item</label> <input
+										type="text" class="form-control" id="item" name="item"
+										value="" />
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-form-label">itemParent</label> <input
+										type="text" class="form-control" id="itemParent" name="itemParent"
+										value="" />
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-form-label">item level</label> <input
+										type="text" class="form-control" id="itemLevel" name="itemLevel"
+										value="" />
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-form-label">item desc</label> <input
+										type="text" class="form-control" id="itemDesc" name="itemDesc"
+										value="" />
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-form-label">division</label> <input
+										type="text" class="form-control" id="division" name="divisionNo"
+										value="" />
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-form-label">divisionName</label> <input
+										type="text" class="form-control" id="divisionName" name="divisionName"
+										value="" />
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-form-label">group</label> <input
+										type="text" class="form-control" id="group" name="groupNo"
+										value="" />
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-form-label">group name</label> <input
+										type="text" class="form-control" id="groupName" name="groupName"
+										value="" />
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-form-label">dept</label> <input
+										type="text" class="form-control" id="dept" name="deptNo"
+										value="" />
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-form-label">dept name</label> <input
+										type="text" class="form-control" id="deptName" name="deptName"
+										value="" />
+								</div>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Close</button>
+								<input type="submit" class="btn btn-primary" value="save" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div class="modal fade" id="staticBackdrop" data-backdrop="static"
+			data-keyboard="false" tabindex="-1"
+			aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p class="alert alert-danger">Are you sure you want to delete</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Close</button>
+						<a href="" class="btn btn-danger" id="delRef">delete</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
