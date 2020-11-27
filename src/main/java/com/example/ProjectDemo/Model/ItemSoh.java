@@ -1,7 +1,6 @@
 package com.example.ProjectDemo.Model;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
