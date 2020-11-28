@@ -8,12 +8,14 @@ $(document).ready(function() {
 			$.get(href, function(department, status) {
 				$('.myForm #id').val(department.deptNo);
 				$('.myForm #name').val(department.deptName);
+				$('.myForm #grpid').val(department.groupNo);
 			});
 			$('.myForm #exampleModal').modal();
 
 		} else {
 			$('.myForm #id').val('');
 			$('.myForm #name').val('');
+			$('.myForm #grpid').val('');
 			$('.myForm #exampleModal').modal();
 		}
 

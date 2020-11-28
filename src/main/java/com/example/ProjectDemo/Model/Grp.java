@@ -8,6 +8,8 @@ public class Grp {
 	@Id
 	private int groupNo;
 	private String groupName;
+	private int divisionNo;
+	
 	public int getGroupNo() {
 		return groupNo;
 	}
@@ -19,6 +21,12 @@ public class Grp {
 	}
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
+	}
+	public int getDivisionNo() {
+		return divisionNo;
+	}
+	public void setDivisionNo(int divisionNo) {
+		this.divisionNo = divisionNo;
 	}
 	
 	

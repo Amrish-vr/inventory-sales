@@ -9,6 +9,7 @@ public class Department {
 	@Id
 	private int deptNo;
 	private String deptName;
+	private int groupNo;
 
 	public int getDeptNo() {
 		return deptNo;
@@ -25,5 +26,14 @@ public class Department {
 	public void setDeptName(String deptName) {
 		this.deptName = deptName;
 	}
+
+	public int getGroupNo() {
+		return groupNo;
+	}
+
+	public void setGroupNo(int groupNo) {
+		this.groupNo = groupNo;
+	}
+	
 
 }

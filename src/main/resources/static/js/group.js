@@ -8,12 +8,14 @@ $(document).ready(function() {
 			$.get(href, function(grp, status) {
 				$('.myForm #id').val(grp.groupNo);
 				$('.myForm #name').val(grp.groupName);
+				$('.myForm #Divid').val(grp.divisionNo);
 			});
 			$('.myForm #exampleModal').modal();
 
 		} else {
 			$('.myForm #id').val('');
 			$('.myForm #name').val('');
+			$('.myForm #Divid').val('');
 			$('.myForm #exampleModal').modal();
 		}
 

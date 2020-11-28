@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<title>Insert title here</title>
+<title>RMS - Hierarchy Departments</title>
 <script type="text/javascript" src="webjars/jquery/2.2.3/jquerymin.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript"
@@ -29,7 +29,7 @@
 		<ul class="sidebar-navigation">
 			<li class="header">Navigation</li>
 			<li><a th:href="@{/hierarchy}"> <i class="fa fa-home" aria-hidden="true"></i>
-					Homepage
+					Hierarchy Master
 			</a></li>
 			<li><a href="#"> <i class="fa fa-tachometer"
 					aria-hidden="true"></i> About
@@ -48,12 +48,11 @@
 	</div>
 	<br>
 	<br>
-	<br>
 
 <div class="content-container">
-
+<h2 align="center">Hierarchy Management - Department</h2>
 	<div class="container">
-		<br> <br> <br> <br> <br>
+		<br> <br> <br> <br>
 		<button class="btn btn-success nBtn">New</button>
 		<div class="card">
 			<div class="card-block">
@@ -62,12 +61,16 @@
 						<tr>
 							<th>Department No</th>
 							<th>Department Name</th>
+							<th>Group Number</th>
+							<th>Edit Department</th>
+							<th>Delete Department</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="department :${data.content}">
 							<td th:text="${department.deptNo}"></td>
 							<td th:text="${department.deptName}"></td>
+							<td th:text="${department.groupNo}"></td>
 							<td><a th:href="@{/department/findOne/(id=${department.deptNo})}"
 								class="btn btn-primary eBtn">edit</a></td>
 							<td><a th:href="@{/department/delete/(id=${department.deptNo})}"
@@ -109,6 +112,10 @@
 										type="text" class="form-control" id="name" name="deptName"
 										value="" />
 								</div>
+								<div class="form-group">
+									<label for="grpid" class="col-form-label">Department No</label> <input
+										type="text" class="form-control" id="grpid" name="groupNo" value="" />
+								</div>
 
 							</div>
 							<div class="modal-footer">
@@ -128,7 +135,7 @@
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+						<h5 class="modal-title" id="staticBackdropLabel">Delete Department</h5>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
