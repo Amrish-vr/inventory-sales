@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<title>Insert title here</title>
+<title>RMS - Item Master</title>
 <script type="text/javascript" src="webjars/jquery/2.2.3/jquerymin.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript"
@@ -24,9 +24,9 @@
 	</nav>
 	<br>
 	<br>
-	<br>
+	<h2 align="center">Item Master Data</h2>
 	<div class="container">
-		<br> <br> <br> <br> <br>
+		<br> <br> <br>
 		<button class="btn btn-success nBtn">New</button>
 		<div class="card">
 			<div class="card-block">
@@ -69,7 +69,7 @@
 		<ul class="nav nav-pills">
 			<li class="nav-item"
 				th:each="i : ${#numbers.sequence(0,data.totalPages-1)}"><a
-				th:href="@{/(page=${i})}" th:text="${i}" class="nav-link"
+				th:href="@{/itemMaster(page=${i})}" th:text="${i}" class="nav-link"
 				th:classappend="${currentpage}==${i}?'active':' '"></a>
 		</ul>
 		<div class="myForm">
@@ -157,7 +157,7 @@
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+						<h5 class="modal-title" id="staticBackdropLabel">Delete Item</h5>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
