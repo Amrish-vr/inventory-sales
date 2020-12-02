@@ -18,29 +18,29 @@ public class DivisionController {
 	@Autowired
 	private DivisionSer divisionSer;
 
-	@GetMapping("/")
+	@GetMapping("/division")
 	public String showpage(Model model, @RequestParam(defaultValue = "0") int page) {
 		model.addAttribute("data", divisionSer.display(page));
 		model.addAttribute("currentpage", page);
 		return "division";
 	}
 
-	@GetMapping("/findOne")
+	@GetMapping("/division/findOne")
 	@ResponseBody
 	public Optional<Division> findOne(@RequestParam Integer id) {
 		return divisionSer.findbyID(id);
 	}
 
-	@GetMapping("/delete")
+	@GetMapping("/division/delete")
 	public String deleteCountry(@RequestParam Integer id) {
 		divisionSer.deletebyID(id);
-		return "redirect:/";
+		return "redirect:/division";
 	}
 
-	@PostMapping(path = "/save", consumes = "application/x-www-form-urlencoded")
+	@PostMapping(path = "/division/save", consumes = "application/x-www-form-urlencoded")
 	public String saveCountry(Division c) {
 		divisionSer.save(c);
-		return "redirect:/";
+		return "redirect:/division";
 	}
 
 }
