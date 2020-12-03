@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 		.csrf().disable()
 		.authorizeRequests()
-		.antMatchers("/Replenishment").hasRole("ADMIN")
+		.antMatchers("/Replenishment").authenticated()
 		.antMatchers("/css/Login.css/**","/images/inventory.jpg/**").permitAll()
 		.and()
 		.formLogin()
