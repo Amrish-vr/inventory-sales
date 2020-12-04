@@ -15,9 +15,7 @@
 	<name>ProjectDemo</name>
 	<description>Project Demo</description>
 
-	<properties>
-		<java.version>11</java.version>
-	</properties>
+	
 
 	<dependencies>
 		<dependency>
