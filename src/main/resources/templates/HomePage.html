@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <title>Inventory Management</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,8 +12,9 @@
 	<div class="navbar">
 		<a class="active" th:href="@{/}"><i class="fa fa-fw fa-home"></i>
 			Home</a> <a
-			th:href="@{/signUp}"><i class="fa fa-fw fa-envelope"></i>Sign Up</a> <a
-			th:href="@{/Login}"><i class="fa fa-fw fa-user"></i> Login</a>
+			th:href="@{/signUp}"><i class="fa fa-fw fa-envelope"></i>Sign Up</a>
+			<span sec:authorize="isAnonymous()"> <a th:href="@{/Login}"><i class="fa fa-fw fa-user"></i> Login</a></span>
+			<span sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></span>
 	</div>
 	<br>
 
