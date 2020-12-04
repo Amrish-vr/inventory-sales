@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="UTF-8" />
 <title>RMS - Item Master</title>
@@ -7,7 +8,8 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript"
 	src="webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" th:src="@{/js/itemMaster.js}" src="/js/itemMaster.js"></script>
+<script type="text/javascript" th:src="@{/js/itemMaster.js}"
+	src="/js/itemMaster.js"></script>
 <link rel="stylesheet"
 	href="webjars/bootstrap/4.0.0/css/bootstrap.min.css" />
 </head>
@@ -15,8 +17,8 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link"
-					th:href="@{/}">Home <span class="sr-only">(current)</span>
+				<li class="nav-item active"><a class="nav-link" th:href="@{/}">Home
+						<span class="sr-only">(current)</span>
 				</a></li>
 			</ul>
 		</div>
@@ -94,13 +96,13 @@
 								</div>
 								<div class="form-group">
 									<label for="name" class="col-form-label">itemParent</label> <input
-										type="text" class="form-control" id="itemParent" name="itemParent"
-										value="" />
+										type="text" class="form-control" id="itemParent"
+										name="itemParent" value="" />
 								</div>
 								<div class="form-group">
 									<label for="name" class="col-form-label">item level</label> <input
-										type="text" class="form-control" id="itemLevel" name="itemLevel"
-										value="" />
+										type="text" class="form-control" id="itemLevel"
+										name="itemLevel" value="" />
 								</div>
 								<div class="form-group">
 									<label for="name" class="col-form-label">item desc</label> <input
@@ -109,13 +111,13 @@
 								</div>
 								<div class="form-group">
 									<label for="name" class="col-form-label">division</label> <input
-										type="text" class="form-control" id="division" name="divisionNo"
-										value="" />
+										type="text" class="form-control" id="division"
+										name="divisionNo" value="" />
 								</div>
 								<div class="form-group">
 									<label for="name" class="col-form-label">divisionName</label> <input
-										type="text" class="form-control" id="divisionName" name="divisionName"
-										value="" />
+										type="text" class="form-control" id="divisionName"
+										name="divisionName" value="" />
 								</div>
 								<div class="form-group">
 									<label for="name" class="col-form-label">group</label> <input
@@ -124,8 +126,8 @@
 								</div>
 								<div class="form-group">
 									<label for="name" class="col-form-label">group name</label> <input
-										type="text" class="form-control" id="groupName" name="groupName"
-										value="" />
+										type="text" class="form-control" id="groupName"
+										name="groupName" value="" />
 								</div>
 								<div class="form-group">
 									<label for="name" class="col-form-label">dept</label> <input
@@ -142,7 +144,12 @@
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">Close</button>
-								<input type="submit" class="btn btn-primary" disabled value="save" />
+								<span sec:authorize="hasRole('ADMIN')"><input
+									type="submit" class="btn btn-primary" value="save" /></span> <span
+									sec:authorize="hasRole('USER')"><input type="submit"
+									class="btn btn-primary" disabled value="save" /></span> <span
+									sec:authorize="isAnonymous()"><input type="submit"
+									class="btn btn-primary" disabled value="save" /></span>
 							</div>
 						</div>
 					</div>
@@ -168,7 +175,12 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">Close</button>
-						<input type="submit" class="btn btn-danger" disabled id="delRef" value="delete" />
+						<span sec:authorize="hasRole('ADMIN')"><input type="submit"
+							class="btn btn-danger" id="delRef" value="delete" /></span> <span
+							sec:authorize="hasRole('USER')"><input type="submit"
+							class="btn btn-danger" disabled id="delRef" value="delete" /></span> <span
+							sec:authorize="isAnonymous()"><input type="submit"
+							class="btn btn-danger" disabled id="delRef" value="delete" /></span>
 					</div>
 				</div>
 			</div>

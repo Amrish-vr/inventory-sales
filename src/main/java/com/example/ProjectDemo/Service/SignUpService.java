@@ -13,20 +13,20 @@ import com.example.ProjectDemo.Repository.UsersRepository;
 
 @Service
 public class SignUpService {
-	
+
 	@Autowired
 	private SignUpRepository signUpRepo;
 	@Autowired
 	private UsersRepository usersRepo;
 	@Autowired
 	private AuthoritiesRepository authRepo;
-	
-	public void saveUsers (SignUp signup) {
+
+	public void saveUsers(SignUp signup) {
 		signUpRepo.save(signup);
 		saveCredentails(signup);
 	}
-	
-	private void saveCredentails (SignUp signup) {
+
+	private void saveCredentails(SignUp signup) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		Users user = new Users();
 		user.setUsername(signup.getUserName());
@@ -35,11 +35,15 @@ public class SignUpService {
 		usersRepo.save(user);
 		saveAuthorities(signup);
 	}
-	
-	private void saveAuthorities (SignUp signup) {
+
+	private void saveAuthorities(SignUp signup) {
 		Authorities authorities = new Authorities();
 		authorities.setUsername(signup.getUserName());
-		authorities.setAuthority("ROLE_USER");
+		if (signup.getUserName().equals("Amrish")) {
+			authorities.setAuthority("ROLE_ADMIN");
+		} else {
+			authorities.setAuthority("ROLE_USER");
+		}
 		authRepo.save(authorities);
 	}
 

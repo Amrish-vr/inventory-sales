@@ -9,13 +9,21 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.example.ProjectDemo.Model.ItemSoh;
+import com.example.ProjectDemo.Model.Receiving;
+import com.example.ProjectDemo.Model.salesDemo;
 import com.example.ProjectDemo.Repository.ItemSohRepository;
+import com.example.ProjectDemo.Repository.ReceivingRepository;
+import com.example.ProjectDemo.Repository.SalesRepository;
 
 @Service
 public class ItemSohService {
 
 	@Autowired
 	private ItemSohRepository ItemSohRepo;
+	@Autowired
+	private ReceivingRepository receivingRepo;
+	@Autowired
+	private SalesRepository salesRepo;
 
 	public Page<ItemSoh> display(int page) {
 		return ItemSohRepo.findAll(PageRequest.of(page, 3));
@@ -30,9 +38,34 @@ public class ItemSohService {
 	}
 
 	public void save(ItemSoh c) {
-		LocalDateTime now= LocalDateTime.now();
-		c.setSohUpdateDatetime(now);
+		Optional<ItemSoh> itemsoh = ItemSohRepo.findById(c.getItem());
+		if (c.getStockOnHand() > itemsoh.get().getStockOnHand()) {
+			insertReceiving(c, c.getStockOnHand() - itemsoh.get().getStockOnHand());
+		} else {
+			insertSales (c,itemsoh.get().getStockOnHand()-c.getStockOnHand());
+		}
+		c.setSohUpdateDatetime(LocalDateTime.now());
 		ItemSohRepo.save(c);
 	}
+
+	private void insertReceiving(ItemSoh c, int received) {
+		Receiving receiving = new Receiving();
+		receiving.setItem(c.getItem());
+		receiving.setAvailableSoh(c.getStockOnHand());
+		receiving.setReceivedQty(received);
+		receiving.setReceivedDate(LocalDateTime.now());
+		receivingRepo.save(receiving);
+
+	}
+	
+	private void insertSales(ItemSoh c,int sale) {
+	    salesDemo sales = new salesDemo();
+	    sales.setItem(c.getItem());
+	    sales.setAvailableSoh(c.getStockOnHand());
+	    sales.setSalesQuantity(sale);
+	    sales.setSalesDate(LocalDateTime.now());
+	    salesRepo.save(sales);
+	}
+	
 
 }

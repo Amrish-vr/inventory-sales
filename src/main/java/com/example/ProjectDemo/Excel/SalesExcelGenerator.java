@@ -3,6 +3,9 @@ package com.example.ProjectDemo.Excel;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -55,8 +58,10 @@ public class SalesExcelGenerator {
 				row.createCell(1).setCellValue(sale.getSalesQuantity());
 				// row.createCell(2).setCellValue(sale.getSalesDate());
 
+				LocalDateTime localdate = sale.getSalesDate();
+				Date date= Date.from(localdate.atZone(ZoneId.systemDefault()).toInstant());
 				Cell salesdate = row.createCell(2);
-				salesdate.setCellValue(sale.getSalesDate());
+				salesdate.setCellValue(date);
 				salesdate.setCellStyle(salesDate);
 
 				row.createCell(3).setCellValue(sale.getAvailableSoh());

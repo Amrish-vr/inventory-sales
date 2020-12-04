@@ -1,5 +1,6 @@
 package com.example.ProjectDemo.Model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -11,7 +12,7 @@ public class Receiving {
 	@Id
 	private String item;
 	private int receivedQty;
-	private Date receivedDate;
+	private LocalDateTime receivedDate;
 	private int availableSoh;
 
 	public String getItem() {
@@ -30,12 +31,12 @@ public class Receiving {
 		this.receivedQty = receivedQty;
 	}
 
-	public Date getReceivedDate() {
+	public LocalDateTime getReceivedDate() {
 		return receivedDate;
 	}
 
-	public void setReceivedDate(Date receivedDate) {
-		this.receivedDate = receivedDate;
+	public void setReceivedDate(LocalDateTime localDateTime) {
+		this.receivedDate = localDateTime;
 	}
 
 	public int getAvailableSoh() {
